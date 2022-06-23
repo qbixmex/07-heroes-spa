@@ -1,5 +1,7 @@
 export const MarvelPage = () => {
   return (
-    <h2>MarvelPage</h2>
+    <div className="container py-4">
+      <h2>Marvel Page</h2>
+    </div>
   );
 };
