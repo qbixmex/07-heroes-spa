@@ -81,7 +81,7 @@ export const heroes = [
 	},
 	{
 		'id': 'marvel-spider',
-		'superhero': 'Spider Man',
+		'superhero': 'Spiderman',
 		'studio': 'Marvel Comics',
 		'alter_ego': 'Peter Parker',
 		'first_appearance': 'Amazing Fantasy #15',
@@ -97,7 +97,7 @@ export const heroes = [
 	},
 	{
 		'id': 'marvel-iron',
-		'superhero': 'Iron Man',
+		'superhero': 'Ironman',
 		'studio': 'Marvel Comics',
 		'alter_ego': 'Tony Stark',
 		'first_appearance': 'Tales of Suspense #39',

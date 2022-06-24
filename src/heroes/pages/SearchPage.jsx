@@ -1,19 +1,24 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import queryString from "query-string";
+import { getHeroesByName } from "../helpers/getHeroesByName";
+import { HeroCard } from "../components/HeroCard";
 
 export const SearchPage = () => {
 
   const navigate = useNavigate();
   const { search } = useLocation();
 
-  const { q = '' } = queryString.parse( search );
+  const { q = '' } = queryString.parse(search);
+  const heroes = getHeroesByName(q);
 
-  const { searchText, onInputChange } = useForm({ searchText: '' });
+  const showSearch = (q.length === 0);
+  const showError = (q.length > 0) && (heroes.length === 0);
+
+  const { searchText, onInputChange } = useForm({ searchText: q });
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
-    if (searchText.length <= 2 ) return;
     navigate(`?q=${searchText.trim()}`);
   };
 
@@ -23,7 +28,7 @@ export const SearchPage = () => {
       <hr />
       <div className="row mt-4">
         <div className="col-12 col-lg-5">
-          <form onSubmit={ onSearchSubmit }>
+          <form onSubmit={onSearchSubmit}>
             <div className="row g-2 align-items-center mb-4 mb-lg-0">
               <div className="col-12 col-md-10">
                 <input
@@ -33,8 +38,8 @@ export const SearchPage = () => {
                   type="text"
                   autoComplete="off"
                   placeholder="Search a hero"
-                  value={ searchText }
-                  onChange={ onInputChange }
+                  value={searchText}
+                  onChange={onInputChange}
                 />
               </div>
               <div className="col-12 col-md-2">
@@ -51,13 +56,26 @@ export const SearchPage = () => {
           <h2 style={{ lineHeight: '28px', marginBottom: '0' }}>Results</h2>
           <hr />
 
-          <div className="alert alert-info">
-            <i className="bi bi-emoji-wink"></i> Type a hero name to get results
+          <div className={ `alert alert-info animate__animated animate__flash ${ !showSearch && 'd-none' }` }>
+            <i className="bi bi-emoji-wink-fill"></i> Type a hero name to get results
           </div>
 
-          <div className="alert alert-danger">
-            <i className="bi bi-emoji-frown-fill"></i> There's no hero named <b>{ q }</b>
+          <div className={ `alert alert-danger animate__animated animate__flash ${ !showError && 'd-none'}` }>
+            <i className="bi bi-emoji-frown-fill"></i> There's no hero named <b>{q}</b>
           </div>
+
+          {
+            (heroes.length !== 0) &&
+            <div className="row row-cols-2">
+              {
+                heroes.map(hero => (
+                  <div key={hero.id} className="col animate__animated animate__fadeIn">
+                    <HeroCard {...hero} />
+                  </div>
+                ))
+              }
+            </div>
+          }
         </div>
       </div>
     </>
