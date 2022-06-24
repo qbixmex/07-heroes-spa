@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Navigate, useParams, useNavigate } from "react-router-dom";
 import { CharactersByHero } from "../components";
 import { getHeroById } from "../helpers";
+import { topCss, imageCssClasses } from "./";
 
 export const HeroPage = () => {
 
@@ -27,10 +28,10 @@ export const HeroPage = () => {
   return (
     <>
       <main>
-        <div className="row">
+        <div className={ topCss }>
           <div className="col-12 col-lg-5">
             <img
-              className="img-fluid img-thumbnail mb-4 mb-lg-0"
+              className={imageCssClasses}
               src={`/assets/heroes/${id}.jpg`}
               alt={superhero}
             />
