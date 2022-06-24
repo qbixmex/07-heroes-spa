@@ -1,9 +1,10 @@
+import { useMemo } from 'react';
 import { getHeroesByStudio } from '../helpers';
 import { HeroCard } from './HeroCard';
 
 export const HeroesList = ({ studio }) => {
 
-  const heroes = getHeroesByStudio(studio);
+  const heroes = useMemo(() => getHeroesByStudio(studio), [studio]);
 
   return (
     <div className='row g-4'>
