@@ -66,7 +66,7 @@ export const SearchPage = () => {
 
           {
             (heroes.length !== 0) &&
-            <div className="row row-cols-2">
+            <div className="row row-cols-2 g-4">
               {
                 heroes.map(hero => (
                   <div key={hero.id} className="col animate__animated animate__fadeIn">
