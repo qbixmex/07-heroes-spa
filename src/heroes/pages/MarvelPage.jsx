@@ -1,5 +1,11 @@
+import { HeroesList } from "../components/HeroesList";
+
 export const MarvelPage = () => {
   return (
-    <h2>Marvel Page</h2>
+    <>
+      <h1>Marvel Page</h1>
+      <hr />
+      <HeroesList studio='Marvel Comics' />
+    </>
   );
 };
