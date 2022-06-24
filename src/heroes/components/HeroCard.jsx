@@ -1,12 +1,7 @@
 import { Link } from 'react-router-dom';
-import { CharactersByHero } from './';
 
 export const HeroCard = (props) => {
-  const {
-    id, superhero, alter_ego,
-    first_appearance, characters
-  } = props;
-
+  const { id, superhero, alter_ego, } = props;
   const heroImageUrl = `/assets/heroes/${id}.jpg`;
 
   return (
@@ -22,22 +17,7 @@ export const HeroCard = (props) => {
         </Link>
         <div className="card-body">
           <h2 className="card-title">{superhero}</h2>
-          <p>
-            <span className="fw-bold">Real Name:</span>&nbsp;
-            {alter_ego}
-          </p>
-          <CharactersByHero characters={characters} alter_ego={alter_ego} />
-          <p>
-            <span className="fw-bold">First Appearance:</span><br />
-            <span className="ms-2">{first_appearance}</span>
-          </p>
-          <div className="text-end">
-            <Link
-              className='btn btn-outline-primary btn-sm'
-              to={`/hero/${id}`}>
-              More Info
-            </Link>
-          </div>
+          <p><b>Real Name:</b> {alter_ego}</p>          
         </div>
       </div>
     </div>

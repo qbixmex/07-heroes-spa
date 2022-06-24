@@ -5,7 +5,7 @@ export const heroes = [
 		'studio': 'DC Comics',
 		'alter_ego': 'Bruce Wayne',
 		'first_appearance': 'Detective Comics #27',
-		'characters': 'Bruce Wayne'
+		'characters': 'Bruce Wayne, Terry McGinnis'
 	},
 	{
 		'id': 'dc-superman',

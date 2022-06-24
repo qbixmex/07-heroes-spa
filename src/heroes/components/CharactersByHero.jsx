@@ -6,18 +6,17 @@
  * }} props
  * @returns {JSX.Element}
  */
-export const CharactersByHero = ({ characters, alter_ego }) => {
+export const CharactersByHero = ({ alter_ego, characters  }) => {
 
-  /** @type {string[]} */
+  if (alter_ego === characters) return (<></>);
+
   const charactersArray = characters.split(',');
-
-  if (alter_ego !== characters) return (<></>);
 
   return (
     <>
-      <p className="fw-bold mb-1">Characters:</p>
+      <h3>Characters:</h3>      
       <ul>
-        { charactersArray.map(c => (<li key={c}>{c}</li>)) }
+        {charactersArray.map(c => (<li key={c}>{c}</li>))}
       </ul>
     </>
   );
