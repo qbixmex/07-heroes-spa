@@ -1,4 +1,4 @@
-import { types } from "../types/types";
+import { types } from "../types";
 
 export const authReducer = (state = {}, action) => {
 
@@ -7,7 +7,7 @@ export const authReducer = (state = {}, action) => {
       return {
         ...state,
         logged: true,
-        name: action.payload
+        user: action.payload
       };
 
     case types.logout:
