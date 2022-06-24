@@ -17,7 +17,7 @@ export const CharactersByHero = ({ characters, alter_ego }) => {
     <>
       <p className="fw-bold mb-1">Characters:</p>
       <ul>
-        { charactersArray.map(c => (<li>{c}</li>)) }
+        { charactersArray.map(c => (<li key={c}>{c}</li>)) }
       </ul>
     </>
   );
