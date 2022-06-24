@@ -1,5 +1,6 @@
 :root {
   --blue: #0d6efd;
+  --navy: hsl(198, 80%, 55%);
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #d63384;
@@ -50,3 +51,9 @@ body {
 .bg-gray-dark { background-color: var(--gray-dark); }
 
 .center { text-align: center; }
+
+/* Overrides */
+.alert-info {
+  background-color: var(--navy);
+  color: #eee;
+}
