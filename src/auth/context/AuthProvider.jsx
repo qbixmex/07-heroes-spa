@@ -16,11 +16,7 @@ export const AuthProvider = ({ children }) => {
     if (!name) return;
 
     const user = { id: '8gpR&sP6%g@3/4Y9', name }
-
-    const action = {
-      type: types.login,
-      payload: user
-    };
+    const action = { type: types.login, payload: user };
 
     localStorage.setItem('user', JSON.stringify(user));
 
@@ -30,7 +26,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('user');
-    dispatch({ type: types.logout });
+    const action = { type: types.logout };
+    dispatch(action);
   };
 
   return (
