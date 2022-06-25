@@ -41,8 +41,9 @@ export const Navbar = () => {
 
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
         <ul className="navbar-nav ml-auto">
-          <span className="nav-item nav-link text-warning">{ user?.name }</span>
+          <span id="username" className="nav-item nav-link text-warning">{ user?.name }</span>
           <button
+            id="logout"
             className="nav-item nav-link btn"
             style={{ boxShadow: 'none' }}
             onClick={ handleLogout }
