@@ -56,11 +56,11 @@ export const SearchPage = () => {
           <h2 style={{ lineHeight: '28px', marginBottom: '0' }}>Results</h2>
           <hr />
 
-          <div className={ `alert alert-info animate__animated animate__flash ${ !showSearch && 'd-none' }` }>
+          <div id="info-message" className={ `alert alert-info animate__animated animate__flash${ !showSearch ? ' d-none' : '' }` }>
             <i className="bi bi-emoji-wink-fill"></i> Type a hero name to get results
           </div>
 
-          <div className={ `alert alert-danger animate__animated animate__flash ${ !showError && 'd-none'}` }>
+          <div id="error-message" className={ `alert alert-danger animate__animated animate__flash ${ !showError && 'd-none'}` }>
             <i className="bi bi-emoji-frown-fill"></i> There's no hero named <b>{q}</b>
           </div>
 

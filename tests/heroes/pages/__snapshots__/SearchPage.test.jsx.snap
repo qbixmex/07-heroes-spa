@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test on <SearchPage /> Should match with Snapshot 1`] = `
+<div>
+  <h1>
+    Search a Hero
+  </h1>
+  <hr />
+  <div
+    class="row mt-4"
+  >
+    <div
+      class="col-12 col-lg-5"
+    >
+      <form>
+        <div
+          class="row g-2 align-items-center mb-4 mb-lg-0"
+        >
+          <div
+            class="col-12 col-md-10"
+          >
+            <input
+              autocomplete="off"
+              class="form-control"
+              id="search-text"
+              name="searchText"
+              placeholder="Search a hero"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="col-12 col-md-2"
+          >
+            <div
+              class="d-grid"
+            >
+              <button
+                class="btn btn-outline-primary"
+                type="submit"
+              >
+                <i
+                  class="bi bi-search"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      class="col-12 col-lg-7"
+    >
+      <h2
+        style="line-height: 28px; margin-bottom: 0px;"
+      >
+        Results
+      </h2>
+      <hr />
+      <div
+        class="alert alert-info animate__animated animate__flash"
+        id="info-message"
+      >
+        <i
+          class="bi bi-emoji-wink-fill"
+        />
+         Type a hero name to get results
+      </div>
+      <div
+        class="alert alert-danger animate__animated animate__flash d-none"
+        id="error-message"
+      >
+        <i
+          class="bi bi-emoji-frown-fill"
+        />
+         There's no hero named 
+        <b />
+      </div>
+    </div>
+  </div>
+</div>
+`;
