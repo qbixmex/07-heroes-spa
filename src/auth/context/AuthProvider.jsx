@@ -2,36 +2,34 @@ import { useReducer } from "react";
 import { types } from "../types";
 import { AuthContext, authReducer } from "./";
 
-const initialState = {
-  logged: false,
+const initializer = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  return { logged: !!user, user };
 };
 
 export const AuthProvider = ({ children }) => {
 
-  const [authState, dispatch] = useReducer(authReducer, initialState);
+  const [authState, dispatch] = useReducer(authReducer, {}, initializer);
 
-  /**
-   * Set user to context
-   * @param {string} name
-   * @returns {void|undefined}
-   */
-  const login = (name) => {
+  const login = ( name ) => {
 
     if (!name) return;
 
+    const user = { id: '8gpR&sP6%g@3/4Y9', name }
+
     const action = {
       type: types.login,
-      payload: {
-        id: '8gpR&sP6%g@3/4Y9',
-        name
-      }
+      payload: user
     };
+
+    localStorage.setItem('user', JSON.stringify(user));
 
     dispatch(action);
 
   };
 
   const logout = () => {
+    localStorage.removeItem('user');
     dispatch({ type: types.logout });
   };
 
