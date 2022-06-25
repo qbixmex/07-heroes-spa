@@ -7,9 +7,10 @@ export const LoginScreen = () => {
   const navigate = useNavigate();
   const { login } = useContext( AuthContext );
 
-  const handleLogin = () => {
+  const onLogin = () => {
+    const lastPath = localStorage.getItem('lastPath') || '/';
     login('John Doe');
-    navigate('/marvel', { replace: true });
+    navigate(lastPath, { replace: true });
   };
   
   return (
@@ -19,7 +20,7 @@ export const LoginScreen = () => {
 
       <button
         className="btn btn-primary"
-        onClick={ handleLogin }
+        onClick={ onLogin }
       >
         Login
       </button>

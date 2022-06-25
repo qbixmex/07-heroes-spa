@@ -8,12 +8,9 @@ export const AppRouter = () => {
   return (
     <>
       <Routes>
-        {/* ALTERNATIVE WAY */}
-        <Route path="login/*" element={
+        <Route path="login" element={
           <PublicRoutes>
-            <Routes>
-              <Route path="*" element={<LoginScreen />} />
-            </Routes>
+            <LoginScreen />
           </PublicRoutes>
         } />
 
