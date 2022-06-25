@@ -1,10 +1,18 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { SearchPage } from '../../../src/heroes/pages';
 
+const mockedUseNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUseNavigate
+}));
+
 describe('Test on <SearchPage />', () => {
-  
-  
+
+  beforeEach(() => jest.clearAllMocks());
+
   test('Should match with Snapshot', () => {
     const { container } = render(
       <MemoryRouter initialEntries={['/search']}>
@@ -50,7 +58,39 @@ describe('Test on <SearchPage />', () => {
     expect(cardTitle.innerHTML).toBe('Spiderman');
     expect(image.src).toContain('/assets/heroes/marvel-spider.jpg');
 
-    // screen.debug();
-    
   });
+
+  test('Should show an error if hero is not exist "Batman Beyond"', () => {
+    const { container } = render(
+      <MemoryRouter initialEntries={['/search?q=Batman%20Beyond']}>
+        <SearchPage />
+      </MemoryRouter>
+    );
+    const infoAlert = container.querySelector('#info-message');
+    const errorAlert = container.querySelector('#error-message');
+    expect(infoAlert.className).toContain('d-none');
+    expect(errorAlert.className).not.toContain('d-none');
+    expect(errorAlert.innerHTML).toContain("Batman Beyond");
+  });
+
+  test('Should call navigate function', () => {
+    const inputValue = 'Batman';
+
+    const { container } = render(
+      <MemoryRouter initialEntries={['/search']}>
+        <SearchPage />
+      </MemoryRouter>
+    );
+
+    const form = container.querySelector('form');
+    const searchInput = container.querySelector('#search-text');
+
+    fireEvent.input(searchInput, { target: { value: inputValue } });
+    fireEvent.submit(form);
+
+    expect(searchInput.value).toBe(inputValue);
+    expect(mockedUseNavigate).toHaveBeenCalledWith(`?q=${ inputValue }`);
+
+  });
+
 });
