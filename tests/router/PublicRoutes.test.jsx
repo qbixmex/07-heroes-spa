@@ -1,8 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { AuthContext } from '../../src/auth';
-import { PublicRoutes } from '../../src/router/PublicRoutes';
-
+import { PublicRoutes } from '../../src/router';
 
 describe('Test on <PublicRoutes />', () => {
   test('Should show children if user not authenticated', () => {
